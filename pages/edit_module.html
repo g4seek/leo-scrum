@@ -1,0 +1,46 @@
+{% extends "basic_template.html" %}
+
+{% block head %}  
+  <title>Add module</title>
+{% end %}
+
+{% block body %}
+  <div class="container">
+  {% if module %}
+  <h1>Edit module</h1>
+  <form method="post" action="/module">
+    <div class="form-group">
+      <label>title</label>
+      <input type="text" class="form-control" name="title" value="{{module['title']}}" required>
+    </div>
+    <div class="form-group">
+      <label>memo</label>
+      <textarea class="form-control" name="memo" rows="3">{{module['memo']}}</textarea>
+    </div>
+    <div class="form-group">
+      <label>image</label>
+      <input type="text" class="form-control" name="image" value="{{module['image']}}">
+    </div>
+    <input type="hidden" name="id" value="{{module['_id']}}">
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  {% else %}
+  <h1>Add module</h1>
+  <form method="post" action="/module">
+    <div class="form-group">
+      <label>title</label>
+      <input type="text" class="form-control" name="title" required>
+    </div>
+    <div class="form-group">
+      <label>memo</label>
+      <textarea class="form-control" name="memo" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label>image</label>
+      <input type="text" class="form-control" name="image">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+  {% end %}
+  </div>
+{% end %}

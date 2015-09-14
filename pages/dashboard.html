@@ -1,0 +1,58 @@
+{% extends "basic_template.html" %}
+
+{% block head %}  
+  <title>devops首页</title>
+{% end %}
+
+{% block body %}
+  <div class="container">
+    <div class="page-header">
+      <h1>dashboard</h1>
+      <p class="lead">**使用说明**</p>
+    </div>
+    {% if not modules %}
+    <h3>no modules now</h3>
+    {% end %}
+    <div class="row">
+      {% for module in modules %}
+        <div class="col-md-4">
+          <h4>{{module["title"]}}</h4>
+          {% if module.has_key("image") %}
+            <image src="{{module['image']}}" alt="{{module['memo']}}" /><br/>
+          {% end %}
+          <button type="button" class="btn btn-primary moduleEdit" data="{{module['_id']}}">edit</button>
+          <button type="button" class="btn btn-danger moduleDelete" data="{{module['_id']}}">delete</button>
+        </div>
+      {% end %}
+    </div>
+
+  <hr/>	
+  <a href="/module">添加模块</a>
+  </div> <!-- /container -->
+
+{% end %}
+
+{% block script %}
+  <script>
+    $(function(){
+      $('.moduleEdit').click(function(){
+        var _id = $(this).attr('data');
+        window.location.href = '/module?id=' + _id;
+      });
+      $('.moduleDelete').click(function(){
+        var _id = $(this).attr('data');
+        $.ajax({
+          url: '/module',
+          type: 'DELETE',
+          data: {
+            _id : _id
+          },
+          success: function(response) {
+            alert('delete success!');
+            location.reload();
+          }
+        });
+      });
+    });
+  </script>
+{% end %}
