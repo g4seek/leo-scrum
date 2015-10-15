@@ -1,6 +1,5 @@
 class Task:
-    def __init__(self, id, name, priority, status, link):
-        self.id = id
+    def __init__(self, name, priority, status, link):
         self.name = name
         self.priority = priority
         self.status = status
@@ -8,8 +7,7 @@ class Task:
 
 
 class Module:
-    def __init__(self, id, title, memo, image):
-        self.id = id
+    def __init__(self, title, memo, image):
         self.title = title
         self.memo = memo
         self.image = image

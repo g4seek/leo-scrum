@@ -5,9 +5,9 @@ db = client.tornado
 
 
 def clear_data():
-    db.devops_modules.remove()
+    db.sys_module.remove()
 
 
 if __name__ == '__main__':
-    # clear_data()
+    clear_data()
     pass
