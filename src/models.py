@@ -6,11 +6,10 @@ class Task:
         self.status = status
         self.link = link
 
-    def __str__(self):
-        return "id:" + str(self.id) + ",name:" + self.name + ",priority:" + self.priority + ",status:" + self.status + ",link:" + self.link
 
-
-if __name__ == '__main__':
-    task = Task('1', 'a', '3', 'start', 'a')
-    print task
-    pass
+class Module:
+    def __init__(self, id, title, memo, image):
+        self.id = id
+        self.title = title
+        self.memo = memo
+        self.image = image
